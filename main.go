@@ -47,6 +47,10 @@ func main() {
 	if err := check.CheckFolderList(vmClient, vmConfig); err != nil {
 		klog.Errorf("Check failed: %s", err)
 	}
+
+	if err := check.CheckVirtualMachineHardwareVersion(vmClient, vmConfig); err != nil {
+		klog.Errorf("Check failed: %s", err)
+	}
 }
 
 func connect(clients clients.Interface, cfg *vsphere.VSphereConfig) (*govmomi.Client, error) {
